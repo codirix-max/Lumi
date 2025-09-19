@@ -1,0 +1,121 @@
+<!--
+Filename: index.html
+Description: Bisque & Pink Business Task PWA
+Files included: index.html, style.css, main.js, manifest.json, sw.js, /icons/logo.svg
+
+This single canvas shows all files; save them separately on your server in the paths shown.
+-->
+
+<!-- ===== index.html ===== -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- iOS fullscreen support -->
+  <!-- iOS PWA support -->
+<link rel="apple-touch-icon" href="/icons/logo.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bisque & Pink">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <title>Lumina</title>
+  <meta name="theme-color" content="#fce8d5">
+
+  <!-- Separate CSS -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Fake status bar -->
+  <div class="statusbar">
+    <img src="/icons/logo.svg" alt="logo" class="logo">
+    <div class="status-title">Lumina</div>
+    <div class="status-clock" aria-hidden="true">00:00</div>
+  </div>
+
+  <!-- App Shell -->
+  <div class="app">
+    <header class="app-header">
+      <h1 id="page-title">Dashboard</h1>
+      <button id="menuToggle" class="icon-btn" aria-label="menu">☰</button>
+    </header>
+
+    <main id="app-content">
+      <!-- Dashboard view (default) -->
+      <section id="dashboard" class="view active">
+        <div class="grid">
+          <div class="card stat">
+            <div class="stat-label">Available Tasks</div>
+            <div id="availableCount" class="stat-value">0</div>
+          </div>
+
+          <div class="card stat">
+            <div class="stat-label">Completed (History)</div>
+            <div id="completedCount" class="stat-value">0</div>
+          </div>
+
+          <div class="card stat">
+            <div class="stat-label">Revenue</div>
+            <div id="revenueTotal" class="stat-value">$0</div>
+          </div>
+
+          <div class="card stat">
+            <div class="stat-label">Clients</div>
+            <div id="clientsTotal" class="stat-value">0</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Available Tasks</h3>
+          <ul id="availableTasks" class="list"></ul>
+        </div>
+
+        <div class="card">
+          <h3>Recent Activity (History)</h3>
+          <ul id="historyList" class="list"></ul>
+        </div>
+      </section>
+
+      <!-- Clients view -->
+      <section id="clients" class="view">
+        <div class="card">
+          <h3>Clients</h3>
+          <ul id="clientsList" class="list clients-list"></ul>
+        </div>
+      </section>
+
+      <!-- Notifications view -->
+      <section id="notifications" class="view">
+        <div class="card">
+          <h3>Notifications</h3>
+          <ul id="notificationsList" class="list"></ul>
+        </div>
+      </section>
+
+      <!-- Profile view -->
+      <section id="profile" class="view">
+        <div class="card">
+          <h3>Your Profile</h3>
+          <p id="profileName">Business Owner</p>
+          <p id="profileEmail" class="muted">owner@business.example</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Bottom tabbar -->
+  <nav class="tabbar" role="tablist">
+    <button class="tab active" data-target="dashboard" aria-label="Dashboard">🏠<span>Dashboard</span></button>
+    <button class="tab" data-target="clients" aria-label="Clients">👥<span>Clients</span></button>
+    <button class="tab" data-target="notifications" aria-label="Notifications">🔔<span>Notifications</span></button>
+    <button class="tab" data-target="profile" aria-label="Profile">👤<span>Profile</span></button>
+  </nav>
+
+  <!-- Separate JS -->
+  <script src="/main.js"></script>
+</body>
+</html>
